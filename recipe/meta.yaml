@@ -10,16 +10,16 @@ source:
   sha256: f574302570f96531e0d28493f6a38ca5be6e8bab6a2d4bcf2b362369fe1fdcff
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3
+    - python >={{ python_min }}
     - ratelimit >=2.2.1
     - requests >=2.18.4
 
@@ -30,6 +30,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://gitlab.com/crossref/{{ name }}
